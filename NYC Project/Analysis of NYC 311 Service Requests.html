@@ -1657,10 +1657,6 @@ heatmap &lt;- function(dept,start,end){
     startDate &lt;- mdy(start)
     endDate &lt;- mdy(end)
     
-    if(!(dept %in% agencies)){ #simple error handling for incorrect agency entered
-        print(&quot;Error, please enter a correct agency abbreviation ie: NYPD&quot;)
-    }
-    
     #Analyze overall data or limited to a specific agency
     if(dept==&quot;ALL&quot;){
         times &lt;- df[,c(&quot;Unique.Key&quot;,&quot;Created.Date&quot;)] %&gt;% #keep just complaint ID and date

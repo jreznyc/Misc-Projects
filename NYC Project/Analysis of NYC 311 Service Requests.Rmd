@@ -110,10 +110,6 @@ heatmap <- function(dept,start,end){
     startDate <- mdy(start)
     endDate <- mdy(end)
     
-    if(!(dept %in% agencies)){ #simple error handling for incorrect agency entered
-        print("Error, please enter a correct agency abbreviation ie: NYPD")
-    }
-    
     #Analyze overall data or limited to a specific agency
     if(dept=="ALL"){
         times <- df[,c("Unique.Key","Created.Date")] %>% #keep just complaint ID and date
