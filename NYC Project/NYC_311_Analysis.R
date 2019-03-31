@@ -57,14 +57,14 @@ comp_types <- df %>% subset(select=c(Complaint.Type,Borough)) %>%
     summarize(Complaints = length(Complaint.Type))
 
 #get rid of "agency" type outlier
-comp_types <- comp_types[comp_types$Complaint.Type!="AGENCY",]
+comp_types <- comp_types[comp_types$Complaint.Type!="AGENCY" & 
+                             comp_types$Complaint.Type!="HPD Literature Request",]
 
-ggplot(comp_types, aes(x=Complaint.Type, y=Complaints, fill=Borough)) + 
+ggplot(comp_types, aes(x=reorder(Complaint.Type, Complaints), y=Complaints, fill=Borough)) + 
     xlab("Category") +
     geom_bar(stat="identity") + 
     coord_flip() +
     ggtitle("HPD Complaints by Type")
-
 
 ###### 311 ACTIVITY HEATMAP #######
 #complaints breakdown by weekday and hour, by agency between date range
